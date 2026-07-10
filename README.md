@@ -7,7 +7,7 @@ Visitors enter a graduation year, and the site estimates their K–12 window, ra
 ## Features
 
 - Graduation-year personalization
-- 18 researched facts across five subject areas
+- 28 researched facts across five subject areas
 - Category filters, search, and sorting
 - Expandable explanations and source links
 - Shareable URLs such as `?year=2006`
