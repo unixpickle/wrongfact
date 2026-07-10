@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Enter your graduation year and revisit the classroom facts that science, history, and better evidence have since corrected."
+    />
+    <meta name="theme-color" content="#f1ecdf" />
+    <title>Wrong Fact — What changed since high school?</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to your results</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Wrong Fact home">
+        <span>WRONG</span><span>FACT</span><i aria-hidden="true"></i>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#results">The facts</a>
+        <a href="#method">How it works</a>
+      </nav>
+      <button class="header-year" id="headerYear" type="button" aria-label="Change graduation year">
+        CLASS OF <span>2006</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> A FIELD GUIDE TO OUTDATED KNOWLEDGE</p>
+          <h1 id="hero-title">Your textbooks<br />owe you an <em>update.</em></h1>
+          <p class="hero-dek">
+            Science moved on. History got fuller. Pluto had a whole situation.
+            Tell us when you graduated and we’ll find the facts most likely left behind in your locker.
+          </p>
+        </div>
+
+        <div class="year-panel" id="yearPanel">
+          <div class="orbit-art" aria-hidden="true">
+            <span class="orbit-one"></span>
+            <span class="orbit-two"></span>
+            <span class="planet"></span>
+            <span class="moon"></span>
+          </div>
+          <form id="yearForm">
+            <label for="gradYear">What year did you graduate?</label>
+            <div class="year-entry">
+              <span>CLASS OF</span>
+              <input
+                id="gradYear"
+                name="year"
+                type="number"
+                min="1940"
+                max="2026"
+                inputmode="numeric"
+                value="2006"
+                aria-describedby="yearHint yearError"
+              />
+            </div>
+            <p id="yearHint">High school, give or take a few years. We’re not checking diplomas.</p>
+            <p id="yearError" class="form-error" role="alert"></p>
+            <button class="primary-button" type="submit">
+              Check my textbooks
+              <span aria-hidden="true">↘</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="hero-stamp" aria-hidden="true">
+          <span>FACTS</span>
+          <strong>EXPIRE</strong>
+          <span>CHECK THE DATE</span>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Site summary">
+        <div><strong>18</strong><span>researched corrections</span></div>
+        <div><strong>5</strong><span>subject areas</span></div>
+        <div><strong>0</strong><span>pop quizzes</span></div>
+        <p>Knowledge changes. That’s a feature, not a failure.</p>
+      </section>
+
+      <section class="results" id="results" aria-labelledby="resultsTitle">
+        <div class="results-intro">
+          <div>
+            <p class="eyebrow"><span></span> YOUR OUTDATED CURRICULUM</p>
+            <h2 id="resultsTitle">Class of <span>2006</span>,<br />here’s what changed.</h2>
+          </div>
+          <div class="results-note">
+            <p id="resultsSummary" aria-live="polite"></p>
+            <button id="shareButton" class="text-button" type="button">
+              <span>Copy your results link</span><b aria-hidden="true">↗</b>
+            </button>
+          </div>
+        </div>
+
+        <div class="era-stats" aria-label="Personalized timeline summary">
+          <div>
+            <span class="stat-label">Your K–12 window</span>
+            <strong id="schoolWindow">1994—2006</strong>
+          </div>
+          <div>
+            <span class="stat-label">Updates after graduation</span>
+            <strong id="afterCount">—</strong>
+          </div>
+          <div>
+            <span class="stat-label">Best era match</span>
+            <strong id="topCategory">—</strong>
+          </div>
+        </div>
+
+        <div class="toolbar" aria-label="Fact filters">
+          <div class="filter-scroller" id="categoryFilters" role="group" aria-label="Filter by subject"></div>
+          <label class="search-box" for="factSearch">
+            <span aria-hidden="true">⌕</span>
+            <span class="sr-only">Search the facts</span>
+            <input id="factSearch" type="search" placeholder="Search the facts" autocomplete="off" />
+          </label>
+        </div>
+
+        <div class="facts-heading">
+          <p><span id="visibleCount">18</span> likely classroom holdovers</p>
+          <label for="sortFacts">
+            <span>Sort by</span>
+            <select id="sortFacts">
+              <option value="match">Best match</option>
+              <option value="newest">Newest update</option>
+              <option value="oldest">Oldest myth</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="fact-grid" id="factGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <strong>Nothing in that notebook.</strong>
+          <p>Try another search or clear the subject filter.</p>
+          <button type="button" id="clearFilters" class="secondary-button">Clear filters</button>
+        </div>
+      </section>
+
+      <section class="method" id="method" aria-labelledby="methodTitle">
+        <div class="method-title">
+          <p class="eyebrow"><span></span> THE FINE PRINT</p>
+          <h2 id="methodTitle">“Probably” is<br />doing real work here.</h2>
+        </div>
+        <div class="method-copy">
+          <p class="method-lead">
+            We don’t know what your exact teacher said. We do know when evidence shifted,
+            when institutions updated their guidance, and which myths have stubbornly survived in classrooms.
+          </p>
+          <div class="method-steps">
+            <article><span>01</span><h3>We estimate your school years</h3><p>Your graduation year minus 12 gives us a rough K–12 window.</p></article>
+            <article><span>02</span><h3>We compare the timeline</h3><p>Facts updated during or after that window rank higher for you.</p></article>
+            <article><span>03</span><h3>We show our sources</h3><p>Every card links to the institution, paper, or museum behind the correction.</p></article>
+          </div>
+          <p class="method-caveat">
+            This is a researched conversation starter, not a claim about every school or country.
+            “Updated in” marks a major discovery, ruling, or public correction—not the day every textbook caught up.
+          </p>
+        </div>
+      </section>
+
+      <section class="closing" aria-label="Closing thought">
+        <p>THE GOOD NEWS?</p>
+        <h2>Being wrong is how<br />knowledge gets <em>better.</em></h2>
+        <a href="#yearPanel">Run another year <span aria-hidden="true">↑</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark footer-mark" href="#top"><span>WRONG</span><span>FACT</span><i></i></a>
+      <p>Built for curious people who paid attention in class.</p>
+      <p>Research checked July 2026.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
